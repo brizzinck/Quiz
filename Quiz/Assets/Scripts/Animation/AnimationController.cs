@@ -49,14 +49,21 @@ public class AnimationController : MonoBehaviour
     }
     private void LevelPreparation()
     {
+        ClearTween();
         _sequence.Append(_findTxt.DOFade(0f, 0f));
         _sequence.Append(_panelCells.transform.DOScale(0f, 0f));
     }
     private void AnimationStartingLevel()
     {
+        ClearTween();
         _findTxt.DOFade(1f, 1f);
         _sequence.AppendInterval(0.4f);
         Bounce(_panelCells.gameObject, _sequence);
+    }
+    private void ClearTween()
+    {
+        _sequence.WaitForKill();
+        _sequence = DOTween.Sequence();
     }
     private void OnDisable()
     {

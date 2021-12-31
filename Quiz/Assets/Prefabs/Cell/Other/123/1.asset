@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _identifier: 1
   _sprite: {fileID: 1422184923334757970, guid: b978766ba211dfc46af3f217be150acb, type: 3}
+  _rotationSprite: 0
+  _sizeSprite: 3

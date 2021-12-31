@@ -9,9 +9,11 @@ public class Restart : MonoBehaviour
 
     [SerializeField] private Image _panelRestart;
     [SerializeField] private Image _panelLoading;
+    [SerializeField] private Text _findTxt;
     private AnimationController _animationController;
     public void PreviewRestartPanel()
     {
+        _findTxt.text = "";
         _panelRestart.gameObject.SetActive(true);
         _animationController.FadeImgCpntroll(_panelRestart, 1);
     }    
@@ -27,13 +29,11 @@ public class Restart : MonoBehaviour
     {
         _panelLoading.gameObject.SetActive(true);
         _animationController.FadeImgCpntroll(_panelLoading, 1);
-
         yield return new WaitForSeconds(1);
         _animationController.FadeImgCpntroll(_panelRestart, 0, 0);
+        _animationController.FadeImgCpntroll(_panelLoading, 0, 0);
         _panelRestart.gameObject.SetActive(false);
-
-        yield return new WaitForSeconds(1);
-        Restarting?.Invoke();
         _panelLoading.gameObject.SetActive(false);
+        Restarting?.Invoke();
     }
 }

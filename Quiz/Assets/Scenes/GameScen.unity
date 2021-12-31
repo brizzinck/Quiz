@@ -529,6 +529,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _panelRestart: {fileID: 35776786}
   _panelLoading: {fileID: 1898891440}
+  _findTxt: {fileID: 1468215421}
 --- !u!4 &1211418371
 Transform:
   m_ObjectHideFlags: 0
@@ -865,7 +866,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelBlock: {fileID: 1314179546}
-  _cell: {fileID: -1020274432971300687, guid: 1948b8ea4a7364d4f90399c251505ed4, type: 3}
+  _cellPrefab: {fileID: -1020274432971300687, guid: 1948b8ea4a7364d4f90399c251505ed4,
+    type: 3}
   _mainDataCells:
   - {fileID: 11400000, guid: 778a54417d80c224cbe9c385c39c2948, type: 2}
   - {fileID: 11400000, guid: fcbac7746cd11df47bae4037c1696022, type: 2}

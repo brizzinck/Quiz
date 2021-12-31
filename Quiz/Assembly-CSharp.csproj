@@ -65,7 +65,6 @@
     <Compile Include="Assets\Scripts\Cell\Cell.cs" />
     <Compile Include="Assets\Scripts\Cell\CellBundleData.cs" />
     <Compile Include="Assets\Scripts\Cell\CellData.cs" />
-    <Compile Include="Assets\Scripts\Cell\DisplayInfoCell.cs" />
     <Compile Include="Assets\Scripts\Cell\GroupCells.cs" />
     <Compile Include="Assets\Scripts\Cell\MainDataCells.cs" />
     <Compile Include="Assets\Scripts\Level\LevelTransition.cs" />

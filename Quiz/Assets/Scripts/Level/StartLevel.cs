@@ -6,43 +6,45 @@ using UnityEngine.UI;
 public class StartLevel : MonoBehaviour
 {
     [SerializeField] private GroupCells _panelBlock;
-    [SerializeField] private Cell _cell;
+    [SerializeField] private Cell _cellPrefab;
     [SerializeField] private MainDataCells[] _mainDataCells;
     [SerializeField] private Text _findTxt;
 
-    private List<DisplayInfoCell> _infoCells = new List<DisplayInfoCell>();
+    private List<Cell> _cells = new List<Cell>();
     private List<string> _currentsCorrectIdentifier = new List<string>();
     private List<string> _currentsAllIdentifier = new List<string>();
 
     private Restart _restart;
 
     private string _trueVariate;
-    private int _currentLevel = 0;
-    private int _levelVariationNumber;
+    private int _indexLevel = 0;
+    private int _levelVariation;
 
-    public List<DisplayInfoCell> Cells { get => _infoCells; set => _infoCells = value; }
+    public List<Cell> Cells { get => _cells; set => _cells = value; }
     public string TrueNameCell { get => _trueVariate; }
-    public int CountCells { get => _currentLevel; }
-    public int CurrentLevel { get => _currentLevel; set => _currentLevel = value; }
-    public void CleansingList()
+    public int CountCells { get => _indexLevel; }
+    public int IndexLevel { get => _indexLevel; set => _indexLevel = value; }
+    public Text FindTxt { get => _findTxt; }
+
+    public void CleansingData()
     {
         _currentsCorrectIdentifier = new List<string>();
         _currentsAllIdentifier = new List<string>();
     }
     public void StartingLevel()
     {
-        _levelVariationNumber = Random.Range(0, _mainDataCells.Length);
+        _levelVariation = Random.Range(0, _mainDataCells.Length);
         SpawnCell();
         SetVariablesCells();
         SetTrueVariate();
         DataListControll();
-        _currentLevel += 1;
+        _indexLevel += 1;
     }
 
     private void OnEnable()
     {
         _restart = FindObjectOfType<Restart>();
-        _restart.Restarting += CleansingList;
+        _restart.Restarting += CleansingData;
         _restart.Restarting += StartingLevel;
     }
     private void Start()
@@ -51,32 +53,31 @@ public class StartLevel : MonoBehaviour
     }
     private void SpawnCell()
     {
-        for (int i = 0; i < _mainDataCells[_levelVariationNumber].CellBundleData[_currentLevel].SizeCells; i++)
+        for (int i = 0; i < _mainDataCells[_levelVariation].CellBundleData[_indexLevel].SizeCells; i++)
         {
-            Cell cel = Instantiate(_cell, _panelBlock.transform);
-            _infoCells.Add(cel.GetComponentInChildren<DisplayInfoCell>());
+            Cell cel = Instantiate(_cellPrefab, _panelBlock.transform);
+            _cells.Add(cel.GetComponentInChildren<Cell>());
         }
     }
     private void SetVariablesCells()
     {
-        foreach (Cell cell in _infoCells)
+        foreach (Cell cell in _cells)
         {
-            int numberCell = Random.Range(0, _mainDataCells[_levelVariationNumber].CellBundleData[_currentLevel].CellsData.Length);
-            string temp = _mainDataCells[_levelVariationNumber].CellBundleData[_currentLevel].CellsData[numberCell].Identifier;
+            int numberCell = Random.Range(0, _mainDataCells[_levelVariation].CellBundleData[_indexLevel].CellsData.Length);
+            string temp = _mainDataCells[_levelVariation].CellBundleData[_indexLevel].CellsData[numberCell].Identifier;
 
             bool repetitions = true;
             while (repetitions == true)
             {
                 if (_currentsAllIdentifier.Contains(temp))
                 {
-                    numberCell = Random.Range(0, _mainDataCells[_levelVariationNumber].CellBundleData[_currentLevel].CellsData.Length);
-                    temp = _mainDataCells[_levelVariationNumber].CellBundleData[_currentLevel].CellsData[numberCell].Identifier;
+                    numberCell = Random.Range(0, _mainDataCells[_levelVariation].CellBundleData[_indexLevel].CellsData.Length);
+                    temp = _mainDataCells[_levelVariation].CellBundleData[_indexLevel].CellsData[numberCell].Identifier;
                 }
                 else repetitions = false;
             }
-            PictureSetting(cell.GetComponent<Image>(), _mainDataCells[_levelVariationNumber].CellBundleData[_currentLevel].CellsData[numberCell]);
-            cell.GetComponent<DisplayInfoCell>().IdentifierCell = _mainDataCells[_levelVariationNumber].CellBundleData[_currentLevel].CellsData[numberCell].Identifier;
-
+            PictureSetting(cell.ImageCell, _mainDataCells[_levelVariation].CellBundleData[_indexLevel].CellsData[numberCell]);
+            cell.IdentifierCell = _mainDataCells[_levelVariation].CellBundleData[_indexLevel].CellsData[numberCell].Identifier;
             _currentsAllIdentifier.Add(temp);
         }
     }
@@ -84,21 +85,21 @@ public class StartLevel : MonoBehaviour
     {
         image.sprite = cellData.Sprite;
         image.SetNativeSize();
-        image.rectTransform.sizeDelta = new Vector2(image.rectTransform.sizeDelta.x / 2.5f, image.rectTransform.sizeDelta.y / 2.5f);
+        image.rectTransform.sizeDelta = new Vector2(image.rectTransform.sizeDelta.x / cellData.SizeSprite, image.rectTransform.sizeDelta.y / cellData.SizeSprite);
         image.rectTransform.eulerAngles = new Vector3(image.transform.rotation.x, image.transform.rotation.y, cellData.RotationSprite);
     }
     private void SetTrueVariate()
     {
-        int numberCell = Random.Range(0, _infoCells.Count);
-        _trueVariate = _infoCells[Random.Range(0, numberCell)].IdentifierCell;
+        int numberCell = Random.Range(0, _cells.Count);
+        _trueVariate = _cells[Random.Range(0, numberCell)].IdentifierCell;
 
         bool repetitions = true;
         while (repetitions == true)
         {
             if (_currentsCorrectIdentifier.Contains(_trueVariate))
             {
-                numberCell = Random.Range(0, _infoCells.Count);
-                _trueVariate = _infoCells[numberCell].IdentifierCell;
+                numberCell = Random.Range(0, _cells.Count);
+                _trueVariate = _cells[numberCell].IdentifierCell;
             }
             else repetitions = false;
         }
@@ -112,7 +113,7 @@ public class StartLevel : MonoBehaviour
     }
     private void OnDisable()
     {
-        _restart.Restarting -= CleansingList;
+        _restart.Restarting -= CleansingData;
         _restart.Restarting -= StartingLevel;
     }
 }

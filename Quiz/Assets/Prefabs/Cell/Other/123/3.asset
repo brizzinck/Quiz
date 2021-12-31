@@ -15,3 +15,5 @@ MonoBehaviour:
   _identifier: 3
   _sprite: {fileID: -7900951133411543555, guid: b978766ba211dfc46af3f217be150acb,
     type: 3}
+  _rotationSprite: 0
+  _sizeSprite: 3

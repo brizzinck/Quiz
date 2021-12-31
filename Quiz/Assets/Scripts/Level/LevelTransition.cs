@@ -11,14 +11,14 @@ public class LevelTransition : MonoBehaviour
     {
         for (int i = 0; i < _startScen.Cells.Count; i++)
         {
-            Destroy(_startScen.Cells[i].ParentCell.gameObject);
+            Destroy(_startScen.Cells[i].gameObject);
         }
-        _startScen.Cells = new List<DisplayInfoCell>();
+        _startScen.Cells = new List<Cell>();
 
-        if (_startScen.CurrentLevel > _maxLevel)
+        if (_startScen.IndexLevel > _maxLevel)
         {
             _restart.PreviewRestartPanel();
-            _startScen.CurrentLevel = 0;
+            _startScen.IndexLevel = 0;
             return;
         }
         _startScen.StartingLevel();

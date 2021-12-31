@@ -5,7 +5,6 @@ ScriptsOnlyBuild:
     - Cell
     - CellBundleData
     - CellData
-    - DisplayInfoCell
     - GroupCells
     - LevelTransition
     - MainDataCells
@@ -92,15 +91,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14404}
     - Class: 114
-      Script: {instanceID: 14612}
+      Script: {instanceID: 14848}
     - Class: 114
-      Script: {instanceID: 14850}
+      Script: {instanceID: 15018}
     - Class: 114
-      Script: {instanceID: 15020}
+      Script: {instanceID: 15034}
     - Class: 114
-      Script: {instanceID: 15036}
-    - Class: 114
-      Script: {instanceID: 15152}
+      Script: {instanceID: 15150}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -140,7 +137,7 @@ ScriptsOnlyBuild:
     className: GroupCells
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 4d8bd4b4731ff76176a861898a161137
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Cell
@@ -242,7 +239,7 @@ ScriptsOnlyBuild:
     className: TMP_InputField
   - hash:
       serializedVersion: 2
-      Hash: 07f0f2dd0adb894fede18bc6c23e9a78
+      Hash: 993cfa85183298801dfc564464d8829e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Restart
@@ -308,7 +305,7 @@ ScriptsOnlyBuild:
     className: CinemachinePixelPerfect
   - hash:
       serializedVersion: 2
-      Hash: 0b23be77b5e31d7e435368b24aa1b2d0
+      Hash: 4238421b8d1cb0430f61c6566404a2ad
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: StartLevel
@@ -374,7 +371,7 @@ ScriptsOnlyBuild:
     className: SpriteShape
   - hash:
       serializedVersion: 2
-      Hash: f9b56eee9387bd33aa32e5480c361854
+      Hash: 5e043a0019eaa252d746552c749b7a19
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CellData
@@ -552,12 +549,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools
     className: BeforeAfterTestCommandState
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: DisplayInfoCell
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
