@@ -91,7 +91,7 @@ public class StartLevel : MonoBehaviour
     private void SetTrueVariate()
     {
         int numberCell = Random.Range(0, _cells.Count);
-        _trueVariate = _cells[Random.Range(0, numberCell)].IdentifierCell;
+        _trueVariate = _cells[numberCell].IdentifierCell;
 
         bool repetitions = true;
         while (repetitions == true)
