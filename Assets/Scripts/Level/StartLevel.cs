@@ -85,7 +85,7 @@ public class StartLevel : MonoBehaviour
     {
         image.sprite = cellData.Sprite;
         image.SetNativeSize();
-        image.rectTransform.sizeDelta = new Vector2(image.rectTransform.sizeDelta.x / cellData.SizeSprite, image.rectTransform.sizeDelta.y / cellData.SizeSprite);
+        image.rectTransform.sizeDelta = new Vector2(image.rectTransform.sizeDelta.x / cellData.SizeSprite * 1.6f, image.rectTransform.sizeDelta.y / cellData.SizeSprite * 1.6f);
         image.rectTransform.eulerAngles = new Vector3(image.transform.rotation.x, image.transform.rotation.y, cellData.RotationSprite);
     }
     private void SetTrueVariate()
